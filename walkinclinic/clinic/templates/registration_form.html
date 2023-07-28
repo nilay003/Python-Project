@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>User Registration Form</title>
+  </head>
+  <body>
+    <h2>User Registration Form</h2>
+    <form  method="post" onsubmit="return checkPasswordMatch();">
+        {% csrf_token %}
+      <label for="firstname">FirstName:</label>
+      <input type="text" id="firstname" name="firstname" required /><br />
+
+      <label for="lastname">LastName:</label>
+      <input type="text" id="lastname" name="lastname" required /><br />
+
+      <label for="birthday">BirthDay:</label>
+      <input type="date" id="birthday" name="birthday" required /><br />
+
+      <label for="contactno">ContactNo:</label>
+      <input type="tel" id="contactno" name="contactno" required /><br />
+
+      <label for="street">Street:</label>
+      <input type="text" id="street" name="street" required /><br />
+
+      <label for="city">City:</label>
+      <input type="text" id="city" name="city" required /><br />
+
+      <label for="country">Country:</label>
+      <input type="text" id="country" name="country" required /><br />
+
+      <label for="postalcode">PostalCode:</label>
+      <input type="text" id="postalcode" name="postalcode" required /><br />
+
+      <label for="username">UserName:</label>
+      <input type="text" id="username" name="username" required /><br />
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required /><br />
+
+      <label for="usertype">UserType:</label>
+      <select id="usertype" name="usertype" required>
+        <option value="patient">Patient</option>
+        <option value="staff">Staff</option>
+        <option value="doctor">doctor</option></select
+      ><br />
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required /><br />
+
+      <label for="confirmPassword">Confirm Password:</label>
+      <input
+        type="password"
+        id="confirmPassword"
+        name="confirmPassword"
+        required
+      /><br />
+      <p id="error-message"></p>
+      <!-- Error message will be shown here -->
+
+      <script>
+        function checkPasswordMatch() {
+          var password = document.getElementById("password").value;
+          var confirmPassword =
+            document.getElementById("confirmPassword").value;
+          var errorMessage = document.getElementById("error-message");
+
+          if (password !== confirmPassword) {
+            errorMessage.innerHTML = "Passwords do not match!";
+            return false;
+          } else {
+            errorMessage.innerHTML = "";
+            // You can add further validation or submit the form here if needed.
+            return true;
+          }
+        }
+      </script>
+
+      <input type="submit" value="submit"/>
+    </form>
+  </body>
+</html>
